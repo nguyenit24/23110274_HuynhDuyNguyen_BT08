@@ -2,6 +2,8 @@ package vn.iot.enity;
 
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -25,6 +27,9 @@ public class CategoryEntity {
 	@Column(name = "category_name", length = 100, columnDefinition = "nvarchar(200) not null")
 	private String name;
 
+	private String icon;
+	
+	@JsonIgnore
 	@OneToMany(mappedBy = "category",cascade = CascadeType.ALL)
 	private List<ProductEntity> products;
 	

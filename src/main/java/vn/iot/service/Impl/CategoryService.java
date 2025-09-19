@@ -10,16 +10,17 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
+import io.micrometer.common.util.StringUtils;
 import vn.iot.enity.CategoryEntity;
 import vn.iot.repository.CategoryRepository;
 import vn.iot.service.ICategoryService;
 
 @Service
-public class CategoryService implements ICategoryService{
-	
+public class CategoryService implements ICategoryService {
+
 	@Autowired
 	CategoryRepository categoryRepository;
-	
+
 	@Override
 	public long count() {
 		return categoryRepository.count();
@@ -77,8 +78,19 @@ public class CategoryService implements ICategoryService{
 
 	@Override
 	public <S extends CategoryEntity> S save(S entity) {
+		if (entity.getCategoryId() == null) {
+			return categoryRepository.save(entity);
+		} else {
+			Optional<CategoryEntity> opt = findById(entity.getCategoryId());
+			if (opt.isPresent()) {
+				if (StringUtils.isEmpty(entity.getIcon())) {
+					entity.setIcon(opt.get().getIcon());
+				} else {
+					entity.setIcon(entity.getIcon());
+				}
+			}
+		}
 		return categoryRepository.save(entity);
 	}
-	
-	
+
 }
