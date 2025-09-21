@@ -30,7 +30,7 @@ public class CategoryEntity {
 
 	private String icon;
 	
-	@JsonIgnore
+
 	@OneToMany(mappedBy = "category",cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	private List<ProductEntity> products;
 	
