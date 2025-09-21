@@ -10,7 +10,6 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 
 import vn.iot.enity.CategoryEntity;
-import vn.iot.repository.CategoryRepository;
 
 public interface ICategoryService {
 
@@ -38,5 +37,5 @@ public interface ICategoryService {
 
 	long count();
 
-	
+	Optional<CategoryEntity> findByName(String name);
 }

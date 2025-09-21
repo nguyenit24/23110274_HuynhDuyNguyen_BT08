@@ -2,7 +2,6 @@ package vn.iot.enity;
 
 import java.sql.Date;
 
-import org.springframework.format.annotation.DateTimeFormat;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -14,8 +13,6 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
-import jakarta.persistence.Temporal;
-import jakarta.persistence.TemporalType;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -26,7 +23,6 @@ import lombok.NoArgsConstructor;
 @Entity
 @Table(name = "Products")
 public class ProductEntity {
-	private static final long serialVersionUID = 1L;
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long productId;
@@ -45,7 +41,7 @@ public class ProductEntity {
 
 	private Date createDate;
 	@Column(nullable = false)
-	private short status;
+	private boolean status;
 	@JsonIgnore
 	@ManyToOne
 	@JoinColumn(name="categoryId")

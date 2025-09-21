@@ -9,7 +9,6 @@ import org.springframework.core.io.UrlResource;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
-import io.swagger.v3.oas.models.Paths;
 import vn.iot.config.StorageProperties;
 import vn.iot.exception.StorageException;
 import vn.iot.service.IStorageService;

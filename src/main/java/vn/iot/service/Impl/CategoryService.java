@@ -93,4 +93,9 @@ public class CategoryService implements ICategoryService {
 		return categoryRepository.save(entity);
 	}
 
+	@Override
+	public Optional<CategoryEntity> findByName(String name) {
+		return categoryRepository.findByName(name);
+	}
+
 }

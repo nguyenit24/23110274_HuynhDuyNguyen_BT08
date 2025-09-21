@@ -1,9 +1,5 @@
 package vn.iot.model;
 
-import lombok.AllArgsConstructor;
-import lombok.*;
-import lombok.NoArgsConstructor;
-
 public class CategoryModel {
 	private Long CategoryId;
 	private String name;
